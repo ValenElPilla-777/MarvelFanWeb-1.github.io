@@ -1,0 +1,340 @@
+/* Estilos base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    background-color: #000;
+    color: #fff;
+    font-family: 'marvel-fuente', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+  
+  /* BARRA SUPERIOR CON FADE Y TÍTULO BLANCO */
+  #barra-superior-peliculas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(92, 11, 11, 0.733);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 50px;
+    color: white;
+    font-family: 'marvel-fuente';
+    z-index: 1000;
+    cursor: url('imagenes/cursor.cur'), auto;
+    text-decoration: none;
+    animation: fadeIn 2s ease forwards;
+  }
+  
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  #titulo-barra {
+    font-size: 40px;
+    font-weight: bold;
+    color: white; /* Título en blanco */
+  }
+  
+  #mute-btn-secundario {
+    background: none;
+    border: none;
+    font-size: 25px;
+    color: white;
+    cursor: url('imagenes/pointer.cur'), auto;
+    padding: 10px;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  #barra-izquierda {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    cursor: url('imagenes/cursor.cur');
+  }
+  
+  #barra-izquierda a {
+    text-decoration: none;
+    display: inline-block;
+    height: 100%;
+    width: auto;
+    padding: 5px;
+    border: black;
+  }
+  
+  #barra-izquierda a:hover {
+    cursor: url('imagenes/pointer.cur'), pointer;
+  }
+  
+  #logo-barra {
+    height: 40px;
+    width: auto;
+    object-fit: contain;
+  }
+  
+  /* GALERÍA DE PELÍCULAS */
+  #galeria-mcu {
+    padding: 40px;
+    background-color: #000;
+    color: #fff;
+    font-family: 'marvel-fuente', sans-serif;
+    margin-top: 100px; /* Ajuste para la barra fija */
+  }
+  
+  .filtros {
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 5%;
+  }
+  
+  .filtros button {
+    background-color: #c00;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 10px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .filtros button.activo {
+    background-color: #900;
+  }
+  
+  .contenedor-galeria {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .tarjeta {
+    background-color: #111;
+    border: 1px solid #333;
+    border-radius: 8px;
+    width: 200px;
+    text-align: center;
+    overflow: hidden;
+  }
+  
+  .tarjeta img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .tarjeta h3 {
+    margin: 10px 0 5px;
+  }
+  
+  .tarjeta p {
+    margin-bottom: 10px;
+    color: #ccc;
+  }
+  
+  /* EFECTOS Y ANIMACIONES */
+  .fade-in {
+    animation: fadeIn 2s ease forwards;
+  }
+  
+  /* FOOTER */
+  #footer {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 30px 20px;
+    font-family: 'marvel-fuente', sans-serif;
+    text-align: center;
+    z-index: 5;
+  }
+  
+  .footer-contenido {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 40px;
+  }
+  
+  .footer-columna {
+    flex: 1 1 250px;
+    max-width: 300px;
+  }
+  
+  .footer-columna h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 5px red;
+  }
+  
+  .footer-columna p {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  
+  /* FONDOS Y EFECTOS VISUALES */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('imagenes/fondo-marvel.jpg') no-repeat center center;
+    background-size: cover;
+    z-index: -2;
+    opacity: 0.15;
+    filter: blur(2px);
+  }
+  
+  body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, transparent 20%, #000 80%);
+    z-index: -1;
+  }
+  
+  /* FUENTES PERSONALIZADAS */
+  @font-face {
+    font-family: 'marvel-fuente';
+    src: url('fuentes/marvel-fuente.otf') format('woff'),
+         url('fuentes/marvel-fuente.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'marvel-fuente2';
+    src: url('fuentes/marvel-fuente2.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  .tarjeta {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Efecto hover para tarjetas */
+.tarjeta {
+    transition: all 0.3s ease;
+    transform-origin: center;
+    cursor: url('imagenes/cursor.png'), auto;
+}
+
+.tarjeta:hover {
+    transform: scale(1.05) translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    z-index: 10;
+}
+
+.tarjeta:hover img {
+    filter: brightness(1.1);
+}
+
+/* Estilos para botones de filtro */
+.filtros button {
+    transition: all 0.3s ease;
+    background: linear-gradient(145deg, #2a2a2a, #1e1e1e);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 5px;
+    border-radius: 25px;
+    font-weight: bold;
+    cursor: url('imagenes/cursor.png'), auto;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.filtros button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: 0.5s;
+}
+
+.filtros button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 7px 15px rgba(0,0,0,0.2);
+    background: linear-gradient(145deg, #3a3a3a, #2e2e2e);
+}
+
+.filtros button:hover::before {
+    left: 100%;
+}
+
+.filtros button.activo {
+    background: linear-gradient(145deg, #e62429, #b71c1c);
+    color: white;
+    box-shadow: 0 0 10px rgba(230, 36, 41, 0.7);
+}
+
+/* Cursor personalizado */
+body {
+    cursor: url('imagenes/cursor.png'), auto;
+}
+
+/* Animaciones para tarjetas y categorías */
+.tarjeta, .categoria {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Footer */
+#footer {
+  position: relative;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 30px 20px;
+  font-family: 'marvel-fuente', sans-serif;
+  text-align: center;
+  z-index: 5;
+}
+
+.footer-contenido {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 40px;
+}
+
+.footer-columna {
+  flex: 1 1 250px;
+  max-width: 300px;
+}
+
+.footer-columna h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 5px red;
+}
+
+.footer-columna p {
+  font-size: 16px;
+  line-height: 1.6;
+}

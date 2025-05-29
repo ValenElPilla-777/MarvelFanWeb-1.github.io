@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marvel FanWeb - Videojuegos</title>
+    <link rel="stylesheet" href="videojuegos.css">
+    <link rel="icon" href="imagenes/logo.png" type="image/png">
+    <!-- Font Awesome para íconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Video de fondo con blur -->
+    <div class="video-background">
+        <video autoplay muted loop id="bg-video">
+            <source src="videos/fondo-videojuegos.mp4" type="video/mp4">
+        </video>
+        <div class="video-overlay"></div>
+    </div>
+
+    <!-- Barra superior -->
+    <div id="barra-superior-peliculas" class="fade-in">
+        <div id="barra-izquierda">
+            <a href="principal.html">
+                <img src="imagenes/logo.png" alt="Logo" id="logo-barra">
+            </a>    
+            <a href="principal.html">
+                <div id="titulo-barra">MARVEL FanWeb</div>
+            </a>
+        </div>
+        <button id="mute-btn-secundario">🔇</button>
+    </div>
+
+    <!-- Contenido principal -->
+    <main id="contenido-videojuegos">
+        <!-- Galería de videos principal -->
+        <section class="seccion-destacados">
+            <h2 class="titulo-seccion">JUEGOS DESTACADOS</h2>
+            <div class="galeria-videos">
+                <button class="nav-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
+                
+                <div class="video-container">
+                    <video class="video-destacado active" autoplay muted loop>
+                        <source src="videos/video-muestra.1.mp4" type="video/mp4">
+                    </video>
+                    <video class="video-destacado" autoplay muted loop>
+                        <source src="videos/video-muestra.2.mp4" type="video/mp4">
+                    </video>
+                    <video class="video-destacado" autoplay muted loop>
+                        <source src="videos/video-muestra.3.mp4" type="video/mp4">
+                    </video>
+                </div>
+                
+                <button class="nav-btn next-btn"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            <div class="video-indicators"></div>
+        </section>
+
+        <!-- Categorías de juegos -->
+        <section class="seccion-categorias">
+            <!-- PC -->
+            <article class="categoria-juegos" id="categoria-pc">
+                <header class="cabecera-categoria" onclick="toggleCategoria('pc')">
+                    <div class="platform-icon"><i class="fab fa-windows"></i></div>
+                    <h3>PC</h3>
+                    <span class="flecha">▼</span>
+                </header>
+                <div class="contenido-categoria"></div>
+            </article>
+
+            <!-- PlayStation -->
+            <article class="categoria-juegos" id="categoria-playstation">
+                <header class="cabecera-categoria" onclick="toggleCategoria('playstation')">
+                    <div class="platform-icon"><i class="fab fa-playstation"></i></div>
+                    <h3>PLAYSTATION</h3>
+                    <span class="flecha">▼</span>
+                </header>
+                <div class="contenido-categoria"></div>
+            </article>
+
+            <!-- Xbox -->
+            <article class="categoria-juegos" id="categoria-xbox">
+                <header class="cabecera-categoria" onclick="toggleCategoria('xbox')">
+                    <div class="platform-icon"><i class="fab fa-xbox"></i></div>
+                    <h3>XBOX</h3>
+                    <span class="flecha">▼</span>
+                </header>
+                <div class="contenido-categoria"></div>
+            </article>
+
+            <!-- Nintendo Switch -->
+<article class="categoria-juegos" id="categoria-nintendo">
+    <header class="cabecera-categoria" onclick="toggleCategoria('nintendo')">
+        <div class="platform-icon">
+    <img src="imagenes/videojuegos/logo-nintendo.png" alt="Nintendo" style="width:40px;height:40px;">
+</div>
+        <h3>NINTENDO</h3>
+        <span class="flecha">▼</span>
+    </header>
+    <div class="contenido-categoria"></div>
+</article>
+
+<!-- Móviles (iOS/Android) -->
+<article class="categoria-juegos" id="categoria-moviles">
+    <header class="cabecera-categoria" onclick="toggleCategoria('moviles')">
+        <div class="platform-icon"><i class="fas fa-mobile-alt"></i></div>
+        <h3>MÓVILES</h3>
+        <span class="flecha">▼</span>
+    </header>
+    <div class="contenido-categoria"></div>
+</article>
+        </section>
+    </main>
+                
+
+    <footer id="footer">
+        <div class="footer-contenido">
+          <div class="footer-columna">
+            <h3>Sobre el proyecto</h3>
+            <p>Esta página fue creada como homenaje al universo Marvel, diseñada para mostrar contenido interactivo con estilo MARVELICO?.</p>
+          </div>
+          <div class="footer-columna">
+            <h3>Creado por</h3>
+            <p>Desarrollado por <strong>Valentino Masetto Braschi.</strong></p>
+          </div>
+          <div class="footer-columna">
+            <h3>Inspiración</h3>
+            <p>Stan Lee, el arquitecto del universo Marvel. ¡Excelsior!</p>
+          </div>
+        </div>
+      </footer>
+
+    <script src="videojuegos.js"></script>
+</body>
+</html>

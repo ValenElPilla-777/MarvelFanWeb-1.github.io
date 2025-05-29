@@ -1,0 +1,366 @@
+/* Reset y configuración básica */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body, * {
+    cursor: url('imagenes/cursor.cur'), auto;
+  }
+  
+  /* Pantalla inicial */
+  #pantalla-inicial {
+    position: relative;
+    z-index: 1;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  /* Video de fondo */
+  #video-fondo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -1;
+    filter: blur(10px);
+    opacity: 1;
+  }
+  
+  /* Escudo animado */
+  #escudo {
+    width: 250px;
+    animation: girar 3s linear infinite;
+    transition: transform 1.5s ease-in-out, box-shadow 0.2s ease;
+    border-radius: 50%;
+    z-index: 1;
+  }
+  
+  #escudo:hover {
+    transform: scale(1.05) rotate(5deg); 
+    filter: drop-shadow(0 0 15px #00ffff);
+    cursor: url('imagenes/pointer.cur'), pointer;
+  }
+  
+  #escudo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    z-index: 1;
+  }
+  
+  /* Encabezado y botón mute */
+  #encabezado {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    z-index: 10;
+  }
+  
+  .titulo-superior {
+    font-family: 'marvel-fuente';
+    font-size: 35px;
+    color: white;
+    text-shadow: 2px 2px 5px black;
+  }
+  
+  #mute-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: white;
+    text-shadow: 2px 2px 5px black;
+  }
+  
+  /* Animaciones */
+  @keyframes girar {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  .fade-in {
+    animation: fadeIn 2s forwards;
+  }
+  
+  @keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  
+  /* Frases */
+  #frases-container {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    text-align: center;
+    pointer-events: none;
+    z-index: 20;
+  }
+  
+  .frase {
+    font-family: 'Courier New', monospace;
+    font-size: 1.5rem;
+    color: white;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+    opacity: 0;
+    animation: aparecerFrase 6s ease-in-out forwards;
+  }
+  
+  @keyframes aparecerFrase {
+    0% { opacity: 0; }
+    25%, 75% { opacity: 1; }
+    100% { opacity: 0; }
+  }
+  
+  /* Video interactivo dividido */
+  .video-section {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+  }
+  
+  .video-column {
+    position: relative;
+    flex: 1;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    cursor: url('imagenes/pointer.cur'), auto;
+  }
+  
+  .video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: blur(10px);
+    transition: filter 0.5s ease-in-out;
+  }
+  
+  .overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    z-index: 10;
+    font-family: 'marvel-fuente';
+  }
+  
+  .video-column:hover .video {
+    filter: none;
+    animation: playVideo 0.2s forwards;
+  }
+  
+  @keyframes playVideo {
+    0% { filter: blur(8px); }
+    100% { filter: none; }
+  }
+  
+  /* Título centrado */
+  #titulo-info {
+    text-align: center;
+    color: white;
+    font-size: 2rem;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'marvel-fuente';
+  }
+  
+  .agrandar-escudo {
+    transform: scale(3);
+    opacity: 0;
+  }
+  
+  /* Barra superior */
+  #barra-superior {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(92, 11, 11, 0.733);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 50px;
+    color: white;
+    font-family: 'marvel-fuente';
+    z-index: 1000;
+  }
+  
+  #titulo-barra {
+    font-size: 40px;
+    font-weight: bold;
+  }
+  
+  #mute-btn-secundario {
+    background: none;
+    border: none;
+    font-size: 25px;
+    color: white;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Barra izquierda */
+  #barra-izquierda {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  #barra-izquierda a {
+    text-decoration: none;
+    display: inline-block;
+    padding: 5px;
+  }
+  
+  #logo-barra {
+    height: 40px;
+    width: auto;
+    object-fit: contain;
+  }
+  
+  /* Footer */
+  #footer {
+    position: relative;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 30px 20px;
+    font-family: 'marvel-fuente', sans-serif;
+    text-align: center;
+    z-index: 5;
+  }
+  
+  .footer-contenido {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 40px;
+  }
+  
+  .footer-columna {
+    flex: 1 1 250px;
+    max-width: 300px;
+  }
+  
+  .footer-columna h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 5px red;
+  }
+  
+  .footer-columna p {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  
+  /* Galería MCU */
+  #galeria-mcu {
+    padding: 40px;
+    background-color: #000;
+    color: #fff;
+    font-family: 'marvel-fuente', sans-serif;
+  }
+  
+  .filtros {
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 5%;
+  }
+  
+  .filtro-btn {
+    padding: 10px 20px;
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  
+  .filtro-btn:hover {
+    background-color: #ff0000;
+    color: white;
+  }
+  
+  .filtro-btn.activo {
+    background-color: #ff0000;
+    color: white;
+    border-radius: 10px;
+    transform: scale(1.05);
+  }
+  
+  .contenedor-galeria {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .tarjeta {
+    background-color: #111;
+    border: 1px solid #333;
+    border-radius: 8px;
+    width: 200px;
+    text-align: center;
+    overflow: hidden;
+  }
+  
+  .tarjeta img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .tarjeta h3 {
+    margin: 10px 0 5px;
+  }
+  
+  .tarjeta p {
+    margin-bottom: 10px;
+    color: #ccc;
+  }
+  
+  /* Fuentes personalizadas */
+  @font-face {
+    font-family: 'marvel-fuente';
+    src: url('fuentes/marvel-fuente.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'marvel-fuente2';
+    src: url('fuentes/marvel-fuente2.tff') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  /* No scroll */
+  .no-scroll {
+    overflow: hidden;
+    height: 100vh;
+  }
+  

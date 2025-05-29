@@ -1,0 +1,755 @@
+/* ===== FUENTES Y ESTILOS BASE ===== */
+@font-face {
+    font-family: 'marvel-fuente';
+    src: url('fuentes/marvel-fuente.otf') format('opentype'),
+         url('fuentes/marvel-fuente.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'marvel-fuente-bold';
+    src: url('fuentes/marvel-bold.otf') format('opentype'),
+         url('fuentes/marvel-bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    color: #fff;
+    font-family: 'Arial', sans-serif;
+    overflow-x: hidden;
+    background-color: #000;
+    line-height: 1.6;
+}
+
+/* ===== VIDEO DE FONDO CON BLUR ===== */
+.video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -2;
+    overflow: hidden;
+}
+
+/* ===== BARRA SUPERIOR (AJUSTADA) ===== */
+#barra-superior-peliculas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(92, 11, 11, 0.733); /* Color rojo Marvel exacto */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 50px;
+    color: red;
+    font-family: 'marvel-fuente';
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    cursor: url('imagenes/cursor.cur'), auto;
+}
+
+
+.video-background video {
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    filter: blur(10px) brightness(0.6);
+    opacity: 0.7;
+    object-fit: cover;
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(0,0,0,0.8) 0%, rgba(92,11,11,0.4) 100%);
+    z-index: -1;
+}
+
+
+#barra-izquierda {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    cursor: url('imagenes/cursor.cur');
+}
+
+#titulo-barra {
+    font-size: 40px;
+    font-weight: bold;
+    color: white;
+}
+
+#mute-btn-secundario {
+    background: none;
+    border: none;
+    font-size: 25px;
+    color: rgb(255, 0, 0);
+    cursor: url('imagenes/pointer.cur'), auto;
+    padding: 10px;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#barra-izquierda a {
+    text-decoration: none;
+    display: inline-block;
+    height: 100%;
+    width: auto;
+    padding: 5px;
+    border: black;
+}
+
+#barra-izquierda a:hover {
+    cursor: url('imagenes/pointer.cur'), pointer;
+}
+
+#logo-barra {
+    height: 40px;
+    width: auto;
+    object-fit: contain;
+}
+/* ===== CONTENIDO PRINCIPAL ===== */
+#contenido-videojuegos {
+    padding: 6rem 5% 4rem; /* Añadido padding-top para la barra fija */
+    max-width: 1600px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 10;
+    animation: fadeIn 1s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== GALERÍA DE VIDEOS DESTACADOS ===== */
+.seccion-destacados {
+    margin: 5rem 0;
+    position: relative;
+}
+
+.titulo-seccion {
+    text-align: center;
+    font-size: 3.5rem;
+    margin-bottom: 3rem;
+    color: #fff;
+    text-shadow: 3px 3px 10px #000, 0 0 15px #c00;
+    letter-spacing: 3px;
+    position: relative;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0 2rem;
+    background: linear-gradient(90deg, transparent, rgba(200,0,0,0.2), transparent);
+    font-family: 'marvel-fuente';
+}
+
+.titulo-seccion::before, .titulo-seccion::after {
+    content: '❖';
+    color: #c00;
+    margin: 0 1rem;
+    font-size: 1.5rem;
+    vertical-align: middle;
+}
+
+.galeria-videos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    position: relative;
+    padding: 1rem 0;
+}
+
+.nav-btn {
+    background: rgba(200, 0, 0, 0.7);
+    border: none;
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    font-size: 1.8rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 20;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 15px rgba(0,0,0,0.5);
+    border: 2px solid rgba(255,255,255,0.2);
+}
+
+.nav-btn:hover {
+    background: rgba(230, 36, 41, 1);
+    transform: scale(1.1);
+    box-shadow: 0 0 25px rgba(230,36,41,0.8);
+}
+
+.nav-btn:active {
+    transform: scale(0.95);
+}
+
+.nav-btn i {
+    text-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+
+.video-container {
+    width: 85%;
+    max-width: 1200px;
+    height: 600px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8);
+    border: 4px solid #c00;
+    background: #000;
+    padding-top: 80px;
+}
+
+.video-destacado {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    transform: scale(0.98);
+}
+
+.video-destacado.active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.video-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+.indicator {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #555;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.indicator:hover {
+    transform: scale(1.3);
+}
+
+.indicator.active {
+    background: #c00;
+    transform: scale(1.4);
+    box-shadow: 0 0 10px rgba(200,0,0,0.8);
+    border-color: #fff;
+}
+
+/* ===== CATEGORÍAS DE JUEGOS ===== */
+.seccion-categorias {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 5% 5rem;
+}
+
+.categoria-juegos {
+    margin-bottom: 3rem;
+    border-radius: 15px;
+    overflow: hidden;
+    background: rgba(20, 20, 20, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(200, 0, 0, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
+}
+
+.categoria-juegos:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(200, 0, 0, 0.3);
+}
+
+.cabecera-categoria {
+    background: linear-gradient(135deg, rgba(92,11,11,0.9) 0%, rgba(200,0,0,0.9) 50%, rgba(92,11,11,0.9) 100%);
+    color: white;
+    padding: 1.5rem 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.cabecera-categoria:hover {
+    background: linear-gradient(135deg, rgba(122,14,14,0.9) 0%, rgba(255,0,0,0.9) 50%, rgba(122,14,14,0.9) 100%);
+}
+
+.platform-icon {
+    font-size: 2.5rem;
+    min-width: 50px;
+    text-align: center;
+    text-shadow: 0 0 10px rgba(0,0,0,0.5);
+    transition: transform 0.3s ease;
+}
+
+.cabecera-categoria:hover .platform-icon {
+    transform: scale(1.2);
+}
+
+.cabecera-categoria h3 {
+    margin: 0;
+    font-size: 2rem;
+    flex-grow: 1;
+    font-family: 'marvel-fuente-bold', sans-serif;
+    text-shadow: 2px 2px 8px #000, 0 0 10px rgba(200,0,0,0.7);
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.cabecera-categoria:hover h3 {
+    letter-spacing: 2px;
+    text-shadow: 3px 3px 10px #000, 0 0 15px rgba(255,0,0,0.9);
+}
+
+.flecha {
+    font-size: 1.8rem;
+    transition: all 0.3s ease;
+    min-width: 30px;
+    text-align: center;
+}
+
+.contenido-categoria {
+    display: none;
+    padding: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    background: rgba(10, 10, 10, 0.7);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border-top: 1px solid rgba(200, 0, 0, 0.2);
+}
+
+.categoria-juegos.activa .contenido-categoria {
+    display: flex;
+    animation: fadeInUp 0.5s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.categoria-juegos.activa .flecha {
+    transform: rotate(180deg) scale(1.2);
+}
+
+/* ===== TARJETAS DE JUEGOS ===== */
+.tarjeta-juego {
+    width: 250px;
+    background: linear-gradient(135deg, rgba(30,30,30,0.9) 0%, rgba(10,10,10,0.9) 100%);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    position: relative;
+    border: 1px solid rgba(200, 0, 0, 0.3);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.tarjeta-juego::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(200,0,0,0.4), transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+}
+
+.tarjeta-juego:hover {
+    transform: translateY(-15px) scale(1.05);
+    box-shadow: 0 20px 40px rgba(230, 36, 41, 0.5);
+    z-index: 5;
+    border-color: rgba(200, 0, 0, 0.7);
+}
+
+.tarjeta-juego:hover::before {
+    opacity: 1;
+}
+
+.tarjeta-juego img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-bottom: 3px solid #c00;
+    transition: transform 0.5s ease;
+}
+
+.tarjeta-juego:hover img {
+    transform: scale(1.1);
+}
+
+.juego-info {
+    padding: 1.2rem;
+    position: relative;
+    z-index: 2;
+}
+
+.tarjeta-juego h4 {
+    margin: 0 0 0.8rem;
+    font-size: 1.3rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #fff;
+    font-family: 'marvel-fuente', sans-serif;
+    text-shadow: 1px 1px 3px #000;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+.tarjeta-juego h4::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background: #c00;
+    transition: width 0.3s ease;
+}
+
+.tarjeta-juego:hover h4::after {
+    width: 100px;
+}
+
+.tarjeta-juego p {
+    margin: 0.5rem 0;
+    color: #ccc;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+}
+
+.info-label {
+    color: #aaa;
+    min-width: 70px;
+    display: inline-block;
+    font-size: 0.85rem;
+}
+
+.tipo-juego {
+    color: #c00 !important;
+    font-weight: bold;
+    font-size: 0.9rem !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.rating {
+    color: #ffcc00;
+    font-weight: bold;
+    text-shadow: 0 0 5px rgba(255,204,0,0.5);
+}
+
+#footer {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 30px 20px;
+    font-family: 'marvel-fuente', sans-serif;
+    text-align: center;
+    z-index: 5;
+  }
+  
+  .footer-contenido {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 40px;
+  }
+  
+  .footer-columna {
+    flex: 1 1 250px;
+    max-width: 300px;
+  }
+  
+  .footer-columna h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 5px red;
+  }
+  
+  .footer-columna p {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+/* ===== EFECTOS ESPECIALES ===== */
+.fade-in {
+    animation: fadeIn 1s ease-out forwards;
+}
+
+.pulse {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(200, 0, 0, 0.7);
+    }
+    70% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 15px rgba(200, 0, 0, 0);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(200, 0, 0, 0);
+    }
+}
+
+/* ===== SCROLLBAR PERSONALIZADA ===== */
+::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(20,20,20,0.8);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(#c00, #800);
+    border-radius: 10px;
+    border: 2px solid rgba(255,255,255,0.1);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(#f00, #a00);
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 1200px) {
+    .video-container {
+        height: 500px;
+    }
+    
+    .cabecera-categoria h3 {
+        font-size: 1.8rem;
+    }
+    
+    .tarjeta-juego {
+        width: 220px;
+    }
+}
+
+@media (max-width: 992px) {
+    html {
+        font-size: 15px;
+    }
+    
+    .video-container {
+        height: 400px;
+        width: 90%;
+    }
+    
+    .nav-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+    }
+    
+    .cabecera-categoria {
+        padding: 1.2rem 1.5rem;
+    }
+    
+    .cabecera-categoria h3 {
+        font-size: 1.6rem;
+    }
+    
+    .platform-icon {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    html {
+        font-size: 14px;
+    }
+    
+    #barra-superior-peliculas {
+        padding: 10px 5%;
+    }
+    
+    #logo-barra {
+        height: 40px;
+    }
+    
+    #titulo-barra {
+        font-size: 1.8rem;
+    }
+    
+    #mute-btn-secundario {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+    }
+    
+    .titulo-seccion {
+        font-size: 2.8rem;
+        padding: 0 1rem;
+    }
+    
+    .video-container {
+        height: 350px;
+    }
+    
+    .galeria-videos {
+        gap: 1rem;
+    }
+    
+    .nav-btn {
+        width: 45px;
+        height: 45px;
+        font-size: 1.3rem;
+    }
+    
+    .cabecera-categoria h3 {
+        font-size: 1.4rem;
+    }
+    
+    .tarjeta-juego {
+        width: 200px;
+    }
+}
+
+@media (max-width: 576px) {
+    html {
+        font-size: 13px;
+    }
+    
+    #contenido-videojuegos {
+        padding: 2rem 3%;
+    }
+    
+    .titulo-seccion {
+        font-size: 2.2rem;
+    }
+    
+    .video-container {
+        height: 250px;
+        width: 95%;
+    }
+    
+    .cabecera-categoria {
+        padding: 1rem;
+        gap: 1rem;
+    }
+    
+    .cabecera-categoria h3 {
+        font-size: 1.3rem;
+    }
+    
+    .platform-icon {
+        font-size: 1.8rem;
+        min-width: 40px;
+    }
+    
+    .flecha {
+        font-size: 1.5rem;
+    }
+    
+    .contenido-categoria {
+        padding: 1.5rem;
+        gap: 1.5rem;
+    }
+    
+    .tarjeta-juego {
+        width: 160px;
+    }
+    
+    .tarjeta-juego img {
+        height: 140px;
+    }
+    
+    .footer-columna {
+        min-width: 100%;
+    }
+}
+
+
+
+/* ===== NINTENDO - IDÉNTICO A PC/PLAYSTATION/XBOX ===== */
+#categoria-nintendo .cabecera-categoria {
+    background: linear-gradient(135deg, rgba(92,11,11,0.9) 0%, rgba(200,0,0,0.9) 50%, rgba(92,11,11,0.9) 100%);
+}
+
+#categoria-nintendo .cabecera-categoria:hover {
+    background: linear-gradient(135deg, rgba(122,14,14,0.9) 0%, rgba(255,0,0,0.9) 50%, rgba(122,14,14,0.9) 100%);
+}
+
+/* ===== MÓVILES - IDÉNTICO A PC/PLAYSTATION/XBOX ===== */
+#categoria-moviles .cabecera-categoria {
+    background: linear-gradient(135deg, rgba(92,11,11,0.9) 0%, rgba(200,0,0,0.9) 50%, rgba(92,11,11,0.9) 100%);
+}
+
+#categoria-moviles .cabecera-categoria:hover {
+    background: linear-gradient(135deg, rgba(122,14,14,0.9) 0%, rgba(255,0,0,0.9) 50%, rgba(122,14,14,0.9) 100%);
+}
+

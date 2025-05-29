@@ -1,0 +1,391 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  @keyframes girar {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  #encabezado {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    z-index: 10;
+  }
+  
+  .titulo-superior {
+    font-family: 'marvel-fuente';
+    font-size: 35x;
+    color: white;
+    text-shadow: 2px 2px 5px black;
+    margin: 0;
+  }
+  
+  #mute-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: white;
+    text-shadow: 2px 2px 5px black;
+  }
+  
+  .fade-in {
+    animation: aparecer 2s ease forwards;
+  }
+  
+  @keyframes aparecer {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  body, * {
+    cursor: url('imagenes/cursor.cur'), auto;
+  }
+  
+  button:hover,
+  a:hover,
+  input[type="button"]:hover,
+  input[type="submit"]:hover,
+  label:hover,
+  #mute-btn:hover,
+  #mute-btn *:hover {
+    cursor: url('imagenes/pointer.cur'), pointer;
+  }
+  
+  .video-section {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+  }
+  
+  .video-column {
+    position: relative;
+    flex: 1;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    cursor: url('imagenes/pointer.cur'), auto;
+  }
+  
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  .video-column:hover .video {
+    filter: none;
+    transition: filter 0.5s ease-in-out;
+  }
+  
+  .video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: blur(10px);
+    transition: filter 0.5s ease-in-out;
+  }
+  
+  .overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    z-index: 10;
+    font-family: 'marvel-fuente';
+  }
+  
+  .video-column:hover .video {
+    filter: none;
+  }
+  
+  .video-column:hover video {
+    filter: none;
+    animation: playVideo 0.2s forwards;
+  }
+  
+  @keyframes playVideo {
+    0% {
+      filter: blur(8px);
+    }
+    100% {
+      filter: none;
+    }
+  }
+  
+  .agrandar-escudo {
+    transform: scale(3);
+    opacity: 0;
+  }
+  
+  #titulo-info {
+    text-align: center;
+    color: white;
+    font-size: 2rem;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'marvel-fuente';
+  }
+  
+  .fade-in {
+    animation: fadeIn 2s forwards;
+  }
+  
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  @font-face {
+    font-family: 'marvel-fuente';
+    src: url('fuentes/marvel-fuente.otf') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'marvel-fuente2';
+    src: url('fuentes/marvel-fuente2.tff') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  .no-scroll {
+    overflow: hidden;
+    height: 100vh;
+  }
+  
+  #frases-container {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    text-align: center;
+    pointer-events: none;
+    z-index: 20;
+  }
+  
+  .frase {
+    font-family: 'Courier New', monospace;
+    font-size: 1.5rem;
+    color: white;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+    opacity: 0;
+    animation: aparecerFrase 6s ease-in-out forwards;
+  }
+  
+  @keyframes aparecerFrase {
+    0% {
+      opacity: 0;
+    }
+    25% {
+      opacity: 1;
+    }
+    75% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+  
+  #barra-superior {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(92, 11, 11, 0.733);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 50px;
+    color: white;
+    font-family: 'marvel-fuente';
+    z-index: 1000;
+    cursor: url('imagenes/cursor.cur'), auto;
+    text-decoration: none;
+  }
+  
+  #titulo-barra {
+    font-size: 40px;
+    font-weight: bold;
+  }
+  
+  #mute-btn-secundario {
+    background: none;
+    border: none;
+    font-size: 25px;
+    color: white;
+    cursor: url('imagenes/pointer.cur'), auto;
+    padding: 10px;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  button {
+    cursor: url('imagenes/pointer.cur'), auto;
+  }
+  
+  #barra-izquierda {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    cursor: url('imagenes/cursor.cur');
+  }
+  
+  #barra-izquierda a {
+    text-decoration: none;
+    display: inline-block;
+    height: 100%;
+    width: auto;
+    padding: 5px;
+    border: black;
+  }
+  
+  #barra-izquierda a:hover {
+    cursor: url('imagenes/pointer.cur'), pointer;
+  }
+  
+  #logo-barra {
+    height: 40px;
+    width: auto;
+    object-fit: contain;
+  }
+  
+  #footer {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 30px 20px;
+    font-family: 'marvel-fuente', sans-serif;
+    text-align: center;
+    z-index: 5;
+  }
+  
+  .footer-contenido {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 40px;
+  }
+  
+  .footer-columna {
+    flex: 1 1 250px;
+    max-width: 300px;
+  }
+  
+  .footer-columna h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 5px red;
+  }
+  
+  .footer-columna p {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  
+  #galeria-mcu {
+    padding: 40px;
+    background-color: #000;
+    color: #fff;
+    font-family: 'marvel-fuente', sans-serif;
+  }
+  
+  .filtros {
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 5%;
+  }
+  
+  .filtros button {
+    background-color: #c00;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 10px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .filtros button.activo {
+    background-color: #900;
+  }
+  
+  .contenedor-galeria {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .tarjeta {
+    background-color: #111;
+    border: 1px solid #333;
+    border-radius: 8px;
+    width: 200px;
+    text-align: center;
+    overflow: hidden;
+  }
+  
+  .tarjeta img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .tarjeta h3 {
+    margin: 10px 0 5px;
+  }
+  
+  .tarjeta p {
+    margin-bottom: 10px;
+    color: #ccc;
+  }
+  
+  .filtro-btn.activo {
+    background-color: #ff0000;
+    color: white;
+    border-radius: 10px;
+    transform: scale(1.05);
+  }
+  
+  .filtro-btn {
+    padding: 10px 20px;
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s;
+  }
+  
+  .filtro-btn:hover {
+    background-color: #ff0000;
+    color: white;
+  }
+  
